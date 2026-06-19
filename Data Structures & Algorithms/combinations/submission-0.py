@@ -1,0 +1,18 @@
+class Solution(object):
+    def combine(self, n, k):
+        """
+        :type n: int
+        :type k: int
+        :rtype: List[List[int]]
+        """
+        res = []
+        def dfs(index, path):
+            if len(path) == k:
+                res.append(path[:])
+                return
+            for i in range(index, n+1):
+                path.append(i)
+                dfs(i+1, path)
+                path.pop()
+        dfs(1, [])
+        return res
